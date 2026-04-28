@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | Portfolio</title>
+  <title>Aniket Rajendra Gauliwar | Portfolio</title>
   <meta
     name="description"
-    content="Personal portfolio website for Your Name - projects, skills, and contact."
+    content="Personal portfolio website for Aniket Rajendra Gauliwar - projects, skills, and contact."
   />
   <style>
     :root {
@@ -50,6 +50,10 @@
       margin: 0 auto;
     }
 
+    .section-icon {
+      margin-right: 0.4rem;
+    }
+
     header {
       position: sticky;
       top: 0;
@@ -84,6 +88,17 @@
       color: var(--accent);
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     section {
       padding: 4.5rem 0;
     }
@@ -110,6 +125,23 @@
       padding: 0.3rem 0.75rem;
       border-radius: 999px;
       background: rgba(56, 189, 248, 0.1);
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .badge {
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.12);
+      color: #d7f3ff;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
     }
 
     h1 {
@@ -235,6 +267,47 @@
       color: var(--accent-hover);
     }
 
+    .project-tags {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .project-tags span {
+      font-size: 0.75rem;
+      color: #bfdbfe;
+      border: 1px solid #334155;
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cert-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.7rem;
+    }
+
     .contact-card {
       margin-top: 1rem;
       background: var(--card);
@@ -275,11 +348,12 @@
   <header>
     <div class="container">
       <nav>
-        <a class="logo" href="#home">YourName.dev</a>
+        <a class="logo" href="#home">Aniket.dev</a>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -287,13 +361,18 @@
   </header>
 
   <main id="home" class="hero">
-    <div class="container hero-content">
+    <div class="container hero-content reveal">
       <span class="tag">Open to opportunities</span>
-      <h1>Hi, I am Your Name<br />I build clean and useful web experiences.</h1>
+      <h1>Hi, I am Aniket Gauliwar<br />I build clean and useful web experiences.</h1>
       <p class="subtitle">
-        I am a [Your Role, e.g., Frontend Developer] focused on building performant,
-        user-friendly products. I enjoy turning ideas into polished digital experiences.
+        I am an MCA student and developer focused on building scalable, user-friendly
+        web applications using modern technologies and AI-powered workflows.
       </p>
+      <div class="badge-row">
+        <span class="badge">MCA Student</span>
+        <span class="badge">Full-Stack Developer</span>
+        <span class="badge">AI/ML Enthusiast</span>
+      </div>
       <div class="cta">
         <a class="btn btn-primary" href="#projects">View Projects</a>
         <a class="btn btn-secondary" href="#contact">Get In Touch</a>
@@ -301,96 +380,150 @@
     </div>
   </main>
 
-  <section id="about">
+  <section id="about" class="reveal">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="section-title"><span class="section-icon">👨‍💻</span>About Me</h2>
       <p class="section-text">
-        I am passionate about [your interests: web development, design, AI, etc.].
-        I like creating intuitive interfaces and solving real-world problems with code.
-        Currently, I am working on improving my skills in [technology or domain].
+        I am passionate about full-stack web development and AI/ML. I enjoy creating
+        intuitive interfaces, building backend systems, and solving practical problems
+        through technology. I am currently pursuing MCA at DPGU - School of Management
+        & Research and continuously improving my development and machine learning skills.
       </p>
     </div>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="reveal">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title"><span class="section-icon">🧰</span>Skills</h2>
       <p class="section-text">Technologies and tools I work with:</p>
       <div class="skills-grid">
-        <div class="skill-pill">HTML5</div>
-        <div class="skill-pill">CSS3</div>
-        <div class="skill-pill">JavaScript</div>
-        <div class="skill-pill">React</div>
-        <div class="skill-pill">Node.js</div>
-        <div class="skill-pill">Git & GitHub</div>
+        <div class="skill-pill">Python</div>
+        <div class="skill-pill">Flask</div>
+        <div class="skill-pill">Django</div>
+        <div class="skill-pill">MERN</div>
+        <div class="skill-pill">SQL</div>
+        <div class="skill-pill">HTML</div>
+        <div class="skill-pill">CSS</div>
+        <div class="skill-pill">Java (Basic)</div>
+        <div class="skill-pill">Machine Learning</div>
+        <div class="skill-pill">Deep Learning</div>
+        <div class="skill-pill">NLP</div>
+        <div class="skill-pill">Prompt Engineering</div>
       </div>
     </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="reveal">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title"><span class="section-icon">🚀</span>Projects</h2>
       <p class="section-text">A few things I have built recently:</p>
       <div class="projects-grid">
         <article class="project-card">
-          <h3>Project One</h3>
+          <h3>Smart Job Portal</h3>
           <p>
-            Short description of your project, the problem it solves, and what stack
-            you used.
+            Built a responsive React single-page app with reusable components, Context
+            API state management, and REST API integration for real-time job data.
           </p>
+          <div class="project-tags">
+            <span>React</span><span>JavaScript</span><span>REST API</span>
+          </div>
           <div class="project-links">
-            <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
-            <a href="#" target="_blank" rel="noreferrer">Source Code</a>
+            <a href="https://smart-job-portal-xi.vercel.app" target="_blank" rel="noreferrer">Live Demo</a>
+            <a href="https://smart-job-portal-xi.vercel.app" target="_blank" rel="noreferrer">Project Link</a>
           </div>
         </article>
 
         <article class="project-card">
-          <h3>Project Two</h3>
+          <h3>Faculty Information System</h3>
           <p>
-            Describe another project here with key features and impact.
+            Developed a system using React and Django with CRUD operations, secure
+            authentication, role-based access, and REST API-based frontend-backend flow.
           </p>
+          <div class="project-tags">
+            <span>Django</span><span>React</span><span>SQL</span>
+          </div>
           <div class="project-links">
-            <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
-            <a href="#" target="_blank" rel="noreferrer">Source Code</a>
+            <a href="https://github.com/rexper101/faculty-information-project" target="_blank" rel="noreferrer">Source Code</a>
+            <a href="https://github.com/rexper101/faculty-information-project" target="_blank" rel="noreferrer">Project Link</a>
           </div>
         </article>
 
         <article class="project-card">
-          <h3>Project Three</h3>
+          <h3>Comparative Analysis of ML Models</h3>
           <p>
-            Highlight a project that demonstrates your strengths and creativity.
+            Research-focused project comparing machine learning models using data
+            analysis techniques to evaluate model performance and insights.
           </p>
+          <div class="project-tags">
+            <span>Machine Learning</span><span>Data Analysis</span><span>Research</span>
+          </div>
           <div class="project-links">
-            <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
-            <a href="#" target="_blank" rel="noreferrer">Source Code</a>
+            <a href="#contact">Request Details</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="certifications" class="reveal">
     <div class="container">
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title"><span class="section-icon">🏅</span>Certifications</h2>
+      <p class="section-text">Professional credentials and focused learning in AI and development.</p>
+      <div class="cert-grid">
+        <article class="cert-card">
+          <h3>Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</h3>
+          <p class="cert-meta">Oracle University</p>
+          <p class="section-text">Covered AI/ML fundamentals, NLP, computer vision, cloud AI services, and data science basics using OCI.</p>
+        </article>
+        <article class="cert-card">
+          <h3>Google AI Professional Certificate</h3>
+          <p class="cert-meta">Google (Coursera)</p>
+          <p class="section-text">Hands-on work in prompt engineering, AI for research, communication, data analysis, content creation, and app building.</p>
+        </article>
+        <article class="cert-card">
+          <h3>Frontend Developer (React) & Java (Basic)</h3>
+          <p class="cert-meta">HackerRank</p>
+          <p class="section-text">Validated fundamentals in component-based UI development, state management, debugging, and core Java programming basics.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="container">
+      <h2 class="section-title"><span class="section-icon">📬</span>Contact</h2>
       <p class="section-text">
         Want to collaborate or have an opportunity for me? Let us connect.
       </p>
       <div class="contact-card">
-        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-        <p>LinkedIn: <a href="#" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a></p>
-        <p>GitHub: <a href="#" target="_blank" rel="noreferrer">github.com/yourusername</a></p>
+        <p>Email: <a href="mailto:aniketgauliwar395@gmail.com">aniketgauliwar395@gmail.com</a></p>
+        <p>Phone: <a href="tel:+919075162314">+91-9075162314</a></p>
+        <p>GitHub: <a href="https://github.com/rexper101" target="_blank" rel="noreferrer">github.com/rexper101</a></p>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Aniket Rajendra Gauliwar. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
+gg
