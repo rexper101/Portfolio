@@ -22,6 +22,18 @@
       --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     }
 
+    body.light-theme {
+      --bg: #e2e8f0;
+      --bg-alt: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --border: #cbd5e1;
+      --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -76,12 +88,35 @@
       color: #f8fafc;
     }
 
+    body.light-theme .logo,
+    body.light-theme h1,
+    body.light-theme .section-title,
+    body.light-theme .project-card h3 {
+      color: #0f172a;
+    }
+
     .nav-links {
       display: flex;
       gap: 1.2rem;
       list-style: none;
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.38rem 0.75rem;
+      font-size: 0.82rem;
+      cursor: pointer;
     }
 
     .nav-links a:hover {
@@ -114,6 +149,55 @@
       display: grid;
       gap: 1rem;
       max-width: 720px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(56, 189, 248, 0.35);
+      margin-bottom: 0.8rem;
+    }
+
+    .photo-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 0.8rem;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e0f2fe;
+      background: linear-gradient(145deg, #0369a1, #0ea5e9);
+      border: 3px solid rgba(56, 189, 248, 0.35);
+    }
+
+    body.light-theme .photo-placeholder {
+      color: #082f49;
+      background: linear-gradient(145deg, #7dd3fc, #38bdf8);
+    }
+
+    .profile-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .tag {
@@ -323,6 +407,52 @@
       color: var(--accent);
     }
 
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .contact-form {
+      margin-top: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      border-radius: 0.6rem;
+      padding: 0.65rem 0.75rem;
+      font: inherit;
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-quick-links {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .contact-note {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 0.1rem;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       color: var(--muted);
@@ -341,6 +471,11 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+
+      .hero-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -349,34 +484,48 @@
     <div class="container">
       <nav>
         <a class="logo" href="#home">Aniket.dev</a>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-actions">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button id="themeToggle" class="theme-toggle" type="button">Light Mode</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="home" class="hero">
-    <div class="container hero-content reveal">
-      <span class="tag">Open to opportunities</span>
-      <h1>Hi, I am Aniket Gauliwar<br />I build clean and useful web experiences.</h1>
-      <p class="subtitle">
-        I am an MCA student and developer focused on building scalable, user-friendly
-        web applications using modern technologies and AI-powered workflows.
-      </p>
-      <div class="badge-row">
-        <span class="badge">MCA Student</span>
-        <span class="badge">Full-Stack Developer</span>
-        <span class="badge">AI/ML Enthusiast</span>
+    <div class="container hero-layout reveal">
+      <div class="hero-content">
+        <span class="tag">Open to opportunities</span>
+        <h1>Hi, I am Aniket Gauliwar<br />I build clean and useful web experiences.</h1>
+        <p class="subtitle">
+          I am an MCA student and developer focused on building scalable, user-friendly
+          web applications using modern technologies and AI-powered workflows.
+        </p>
+        <div class="badge-row">
+          <span class="badge">MCA Student</span>
+          <span class="badge">Full-Stack Developer</span>
+          <span class="badge">AI/ML Enthusiast</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+          <a class="btn btn-secondary" href="resume.pdf" download>Download Resume</a>
+        </div>
       </div>
-      <div class="cta">
-        <a class="btn btn-primary" href="#projects">View Projects</a>
-        <a class="btn btn-secondary" href="#contact">Get In Touch</a>
-      </div>
+      <aside class="profile-card">
+        <img src="profile.jpg" alt="Aniket Gauliwar profile photo" class="profile-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+        <div class="photo-placeholder" style="display: none;">AG</div>
+        <h3>Aniket Rajendra Gauliwar</h3>
+        <p class="profile-meta">Pune, Maharashtra, India</p>
+        <p class="profile-meta">MCA - DPGU</p>
+        <p class="contact-note">Add your image as `profile.jpg` in this folder.</p>
+      </aside>
     </div>
   </main>
 
@@ -495,10 +644,22 @@
       <p class="section-text">
         Want to collaborate or have an opportunity for me? Let us connect.
       </p>
-      <div class="contact-card">
-        <p>Email: <a href="mailto:aniketgauliwar395@gmail.com">aniketgauliwar395@gmail.com</a></p>
-        <p>Phone: <a href="tel:+919075162314">+91-9075162314</a></p>
-        <p>GitHub: <a href="https://github.com/rexper101" target="_blank" rel="noreferrer">github.com/rexper101</a></p>
+      <div class="contact-layout">
+        <div class="contact-card">
+          <p>Email: <a href="mailto:aniketgauliwar395@gmail.com">aniketgauliwar395@gmail.com</a></p>
+          <p>Phone: <a href="tel:+919075162314">+91-9075162314</a></p>
+          <p>GitHub: <a href="https://github.com/rexper101" target="_blank" rel="noreferrer">github.com/rexper101</a></p>
+          <div class="contact-quick-links">
+            <a class="btn btn-secondary" href="https://wa.me/919075162314" target="_blank" rel="noreferrer">WhatsApp</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <input type="text" id="senderName" placeholder="Your Name" required />
+          <input type="email" id="senderEmail" placeholder="Your Email" required />
+          <textarea id="senderMessage" placeholder="Your message..." required></textarea>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+          <p class="contact-note">This opens your default email app with the message pre-filled.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -511,6 +672,20 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const themeToggleBtn = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      document.body.classList.add("light-theme");
+      themeToggleBtn.textContent = "Dark Mode";
+    }
+
+    themeToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      const isLight = document.body.classList.contains("light-theme");
+      themeToggleBtn.textContent = isLight ? "Dark Mode" : "Light Mode";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
 
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver((entries) => {
@@ -523,7 +698,21 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
+
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.getElementById("senderName").value.trim();
+      const email = document.getElementById("senderEmail").value.trim();
+      const message = document.getElementById("senderMessage").value.trim();
+      const subject = encodeURIComponent("Portfolio Contact - " + name);
+      const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        "Message:\n" + message
+      );
+      window.location.href = "mailto:aniketgauliwar395@gmail.com?subject=" + subject + "&body=" + body;
+    });
   </script>
 </body>
 </html>
-gg
