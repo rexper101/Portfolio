@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Portfolio</title>
+  <meta
+    name="description"
+    content="Personal portfolio website for Your Name - projects, skills, and contact."
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #111827;
+      --card: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --border: #374151;
+      --max-width: 1100px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(140deg, var(--bg), var(--bg-alt));
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #f8fafc;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      place-items: center;
+      padding-top: 2rem;
+    }
+
+    .hero-content {
+      display: grid;
+      gap: 1rem;
+      max-width: 720px;
+    }
+
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      font-size: 0.9rem;
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.2;
+      color: #f8fafc;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 65ch;
+    }
+
+    .cta {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: 0.65rem;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #082f49;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .btn-secondary:hover {
+      border-color: #4b5563;
+      color: #f8fafc;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      color: #f8fafc;
+    }
+
+    .section-text {
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      max-width: 70ch;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .skill-pill {
+      padding: 0.65rem 0.8rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0.65rem;
+      color: #d1d5db;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.3rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .project-card h3 {
+      color: #f1f5f9;
+      font-size: 1.1rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .project-links a:hover {
+      color: var(--accent-hover);
+    }
+
+    .contact-card {
+      margin-top: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 1.1rem;
+      display: grid;
+      gap: 0.55rem;
+      max-width: 640px;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      padding: 1.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#home">YourName.dev</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container hero-content">
+      <span class="tag">Open to opportunities</span>
+      <h1>Hi, I am Your Name<br />I build clean and useful web experiences.</h1>
+      <p class="subtitle">
+        I am a [Your Role, e.g., Frontend Developer] focused on building performant,
+        user-friendly products. I enjoy turning ideas into polished digital experiences.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+  </main>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-text">
+        I am passionate about [your interests: web development, design, AI, etc.].
+        I like creating intuitive interfaces and solving real-world problems with code.
+        Currently, I am working on improving my skills in [technology or domain].
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-text">Technologies and tools I work with:</p>
+      <div class="skills-grid">
+        <div class="skill-pill">HTML5</div>
+        <div class="skill-pill">CSS3</div>
+        <div class="skill-pill">JavaScript</div>
+        <div class="skill-pill">React</div>
+        <div class="skill-pill">Node.js</div>
+        <div class="skill-pill">Git & GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-text">A few things I have built recently:</p>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>Project One</h3>
+          <p>
+            Short description of your project, the problem it solves, and what stack
+            you used.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
+            <a href="#" target="_blank" rel="noreferrer">Source Code</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Project Two</h3>
+          <p>
+            Describe another project here with key features and impact.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
+            <a href="#" target="_blank" rel="noreferrer">Source Code</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Project Three</h3>
+          <p>
+            Highlight a project that demonstrates your strengths and creativity.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
+            <a href="#" target="_blank" rel="noreferrer">Source Code</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-text">
+        Want to collaborate or have an opportunity for me? Let us connect.
+      </p>
+      <div class="contact-card">
+        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p>LinkedIn: <a href="#" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a></p>
+        <p>GitHub: <a href="#" target="_blank" rel="noreferrer">github.com/yourusername</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
