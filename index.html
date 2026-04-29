@@ -123,6 +123,11 @@
       color: var(--accent);
     }
 
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -315,6 +320,40 @@
       margin-top: 1.3rem;
     }
 
+    .project-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .filter-btn.active {
+      color: #082f49;
+      background: var(--accent);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
     .project-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -501,6 +540,13 @@
       font-weight: 600;
     }
 
+    .hero-focus {
+      color: var(--accent);
+      font-weight: 700;
+      min-height: 1.7rem;
+      letter-spacing: 0.2px;
+    }
+
     body.light-theme .idea-output {
       color: #082f49;
       background: rgba(2, 132, 199, 0.08);
@@ -557,6 +603,7 @@
       <div class="hero-content">
         <span class="tag">Open to opportunities</span>
         <h1>Hi, I am Aniket Gauliwar<br />I specialize in AI/ML solutions.</h1>
+        <p class="hero-focus">Focus: <span id="focusTyper"></span></p>
         <p class="subtitle">
           I am an MCA student focused on Artificial Intelligence and Machine Learning,
           building practical models and intelligent applications for real-world problems.
@@ -640,8 +687,14 @@
     <div class="container">
       <h2 class="section-title"><span class="section-icon">🚀</span>Projects</h2>
       <p class="section-text">A few things I have built recently:</p>
+      <div class="project-filters">
+        <button class="filter-btn active" type="button" data-filter="all">All</button>
+        <button class="filter-btn" type="button" data-filter="ai">AI/ML</button>
+        <button class="filter-btn" type="button" data-filter="web">Web Apps</button>
+        <button class="filter-btn" type="button" data-filter="research">Research</button>
+      </div>
       <div class="projects-grid">
-        <article class="project-card">
+        <article class="project-card" data-category="web">
           <h3>Smart Job Portal</h3>
           <p>
             Built a responsive React single-page app with reusable components, Context
@@ -656,7 +709,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="web">
           <h3>Faculty Information System</h3>
           <p>
             Developed a system using React and Django with CRUD operations, secure
@@ -671,7 +724,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="ai research">
           <h3>Comparative Analysis of ML Models</h3>
           <p>
             Research-focused project comparing machine learning models using data
@@ -817,6 +870,59 @@
         ideaOutput.textContent = line;
       });
     }
+
+    const focusTyper = document.getElementById("focusTyper");
+    const focusLines = [
+      "Model Building",
+      "NLP Projects",
+      "Prompt Engineering",
+      "Applied AI Solutions"
+    ];
+    let focusIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    function typeFocus() {
+      if (!focusTyper) return;
+      const current = focusLines[focusIndex];
+      focusTyper.textContent = deleting
+        ? current.slice(0, charIndex--)
+        : current.slice(0, charIndex++);
+      if (!deleting && charIndex > current.length + 1) deleting = true;
+      if (deleting && charIndex < 0) {
+        deleting = false;
+        focusIndex = (focusIndex + 1) % focusLines.length;
+      }
+      setTimeout(typeFocus, deleting ? 45 : 90);
+    }
+    typeFocus();
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        btn.classList.add("active");
+        projectCards.forEach((card) => {
+          const category = card.dataset.category || "";
+          const visible = filter === "all" || category.includes(filter);
+          card.classList.toggle("hidden", !visible);
+        });
+      });
+    });
+
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const sections = document.querySelectorAll("main[id], section[id]");
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+        });
+      });
+    }, { threshold: 0.5 });
+    sections.forEach((section) => navObserver.observe(section));
   </script>
 </body>
 </html>
