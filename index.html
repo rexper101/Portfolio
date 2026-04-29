@@ -453,6 +453,59 @@
       margin-top: 0.1rem;
     }
 
+    .creative-card {
+      margin-top: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.9rem;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .creative-card::before {
+      content: "";
+      position: absolute;
+      inset: -40% -20% auto;
+      height: 240px;
+      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.18), transparent 60%);
+      animation: drift 8s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(-10%) rotate(0deg); }
+      to { transform: translateX(10%) rotate(360deg); }
+    }
+
+    .idea-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .idea-output {
+      border: 1px dashed rgba(56, 189, 248, 0.4);
+      border-radius: 0.7rem;
+      padding: 0.8rem;
+      color: #dbeafe;
+      background: rgba(2, 132, 199, 0.1);
+      min-height: 62px;
+      display: grid;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    body.light-theme .idea-output {
+      color: #082f49;
+      background: rgba(2, 132, 199, 0.08);
+    }
+
     footer {
       border-top: 1px solid var(--border);
       color: var(--muted);
@@ -489,6 +542,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#creative">Creative</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -538,6 +592,26 @@
         through technology. I am currently pursuing MCA at DPGU - School of Management
         & Research and continuously improving my development and machine learning skills.
       </p>
+    </div>
+  </section>
+
+  <section id="creative" class="reveal">
+    <div class="container">
+      <h2 class="section-title"><span class="section-icon">🎨</span>Creative Lab</h2>
+      <p class="section-text">
+        A quick idea playground that mixes product thinking with AI and web development.
+      </p>
+      <article class="creative-card">
+        <div class="idea-row">
+          <div id="ideaOutput" class="idea-output">
+            Click "Generate Idea" to get a unique build concept.
+          </div>
+          <button id="ideaBtn" class="btn btn-primary" type="button">Generate Idea</button>
+        </div>
+        <p class="contact-note">
+          Fun fact: this combines random domains, technologies, and user value statements in real time.
+        </p>
+      </article>
     </div>
   </section>
 
@@ -713,6 +787,36 @@
       );
       window.location.href = "mailto:aniketgauliwar395@gmail.com?subject=" + subject + "&body=" + body;
     });
+
+    const ideaBtn = document.getElementById("ideaBtn");
+    const ideaOutput = document.getElementById("ideaOutput");
+    const domains = ["healthcare", "education", "agriculture", "local business", "fitness", "finance"];
+    const tech = ["React + Flask", "MERN stack", "Django + PostgreSQL", "Python + ML", "NLP + Web API"];
+    const outcomes = [
+      "to reduce manual work",
+      "to improve decision quality",
+      "to increase user engagement",
+      "to personalize recommendations",
+      "to automate repetitive tasks",
+      "to make data insights accessible"
+    ];
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    if (ideaBtn && ideaOutput) {
+      ideaBtn.addEventListener("click", () => {
+        const line =
+          "Build a " +
+          pickRandom(domains) +
+          " app using " +
+          pickRandom(tech) +
+          " " +
+          pickRandom(outcomes) +
+          ".";
+        ideaOutput.textContent = line;
+      });
+    }
   </script>
 </body>
 </html>
