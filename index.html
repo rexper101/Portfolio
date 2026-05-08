@@ -204,13 +204,13 @@ section{scroll-margin-top:78px}
 .cl-list{display:flex;flex-direction:column;gap:10px}
 .cl{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.03);text-decoration:none;color:var(--text);transition:.3s}
 .cl:hover{border-color:rgba(99,255,190,.25);background:rgba(99,255,190,.03);transform:translateX(6px);color:var(--white)}
-.cl-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
-.ie{background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.2)}
-.ig{background:rgba(99,255,190,.1);border:1px solid rgba(99,255,190,.2)}
-.ip{background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2)}
-.il{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2)}
-.cl-lbl{font-size:10px;color:var(--text3);font-family:var(--mono);margin-bottom:2px}
-.cl-val{font-size:13px;font-weight:500}
+.contact-link{flex:1;display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
+.copy-pill{margin-left:auto;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:var(--text2);font-size:11px;cursor:pointer;transition:.2s;white-space:nowrap}
+.copy-pill:hover{background:rgba(99,255,190,.08);border-color:rgba(99,255,190,.25);color:var(--neon)}
+.copy-msg{position:fixed;bottom:22px;right:22px;padding:12px 16px;border-radius:14px;background:rgba(13,17,23,.95);color:var(--white);font-size:13px;box-shadow:0 18px 40px rgba(0,0,0,0.35);opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s ease,opacity .25s ease}
+.copy-msg.visible{opacity:1;transform:translateY(0)}
+.dynamic-role{transition:opacity .35s ease}
+.dynamic-role.fade{opacity:0}
 
 /* TERMINAL */
 .tm{border-radius:14px;border:1px solid var(--border);background:rgba(13,17,23,0.85);overflow:hidden}
@@ -328,7 +328,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:22
         </div>
         <h1 class="hero-name rv" style="transition-delay:.1s">Aniket<br/><span class="accent">Gauliwar.</span></h1>
         <p class="hero-role rv" style="transition-delay:.18s">
-          <span class="bracket">&lt;</span>&nbsp;Frontend Developer&nbsp;<span class="bracket">/&gt;</span>
+          <span class="bracket">&lt;</span>&nbsp;<span class="dynamic-role">Frontend Developer</span>&nbsp;<span class="bracket">/&gt;</span>
         </p>
         <p class="hero-desc rv" style="transition-delay:.26s">MCA student at DPGU, Pune. I build fast, accessible, and beautiful web applications using React.js and the MERN stack — turning complex ideas into elegant user experiences.</p>
         <div class="hero-btns rv" style="transition-delay:.34s">
@@ -336,9 +336,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:22
           <a href="#contact"  class="btn-o">get in touch →</a>
         </div>
         <div class="hero-stats rv" style="transition-delay:.42s">
-          <div><span class="stat-val">2+</span><span class="stat-lbl">projects built</span></div>
-          <div><span class="stat-val">4+</span><span class="stat-lbl">certifications</span></div>
-          <div><span class="stat-val">8.59</span><span class="stat-lbl">cgpa</span></div>
+          <div><span class="stat-val" data-target="2" data-suffix="+">0</span><span class="stat-lbl">projects built</span></div>
+          <div><span class="stat-val" data-target="4" data-suffix="+">0</span><span class="stat-lbl">certifications</span></div>
+          <div><span class="stat-val" data-target="8.59" data-suffix="">0</span><span class="stat-lbl">cgpa</span></div>
         </div>
       </div>
 
@@ -606,18 +606,24 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:22
         <h2 class="contact-head rv">Let's build<br/>something <em>great</em></h2>
         <p class="contact-sub rv" style="transition-delay:.1s">I'm looking for frontend opportunities. Whether you have a project, a role, or just want to say hi — my inbox is always open.</p>
         <div class="cl-list">
-          <a href="mailto:aniketgauliwar395@gmail.com" class="cl rv" style="transition-delay:.15s">
-            <div class="cl-ico ie">✉</div>
-            <div><div class="cl-lbl">email</div><div class="cl-val">aniketgauliwar395@gmail.com</div></div>
-          </a>
+          <div class="cl rv" style="transition-delay:.15s">
+            <a href="mailto:aniketgauliwar395@gmail.com" class="contact-link">
+              <div class="cl-ico ie">✉</div>
+              <div><div class="cl-lbl">email</div><div class="cl-val">aniketgauliwar395@gmail.com</div></div>
+            </a>
+            <span class="copy-pill" role="button" tabindex="0" data-copy="aniketgauliwar395@gmail.com">copy</span>
+          </div>
           <a href="https://github.com/rexper101" target="_blank" class="cl rv" style="transition-delay:.2s">
             <div class="cl-ico ig">⌥</div>
             <div><div class="cl-lbl">github</div><div class="cl-val">github.com/rexper101</div></div>
           </a>
-          <a href="tel:+919075162314" class="cl rv" style="transition-delay:.25s">
-            <div class="cl-ico ip">✆</div>
-            <div><div class="cl-lbl">phone</div><div class="cl-val">+91 9075 162 314</div></div>
-          </a>
+          <div class="cl rv" style="transition-delay:.25s">
+            <a href="tel:+919075162314" class="contact-link">
+              <div class="cl-ico ip">✆</div>
+              <div><div class="cl-lbl">phone</div><div class="cl-val">+91 9075 162 314</div></div>
+            </a>
+            <span class="copy-pill" role="button" tabindex="0" data-copy="+91 9075 162 314">copy</span>
+          </div>
           <div class="cl rv" style="transition-delay:.3s;cursor:default">
             <div class="cl-ico il">◎</div>
             <div><div class="cl-lbl">location</div><div class="cl-val">Pune, Maharashtra, India</div></div>
@@ -731,6 +737,78 @@ window.addEventListener('scroll', () => {
   secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) active = s.id; });
   navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
 }, { passive: true });
+
+// Typewriter-style role rotation
+const roleEl = document.querySelector('.dynamic-role');
+const roles = ['Frontend Developer', 'React Enthusiast', 'MERN Builder', 'UI-focused Maker'];
+let roleIndex = 0;
+setInterval(() => {
+  roleEl.classList.add('fade');
+  setTimeout(() => {
+    roleIndex = (roleIndex + 1) % roles.length;
+    roleEl.textContent = roles[roleIndex];
+    roleEl.classList.remove('fade');
+  }, 360);
+}, 3600);
+
+// Animated hero stats
+const statEls = document.querySelectorAll('.stat-val');
+let statsAnimated = false;
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      statEls.forEach(el => {
+        const target = parseFloat(el.dataset.target) || 0;
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const stepTime = 20;
+        let current = 0;
+        const stepAmount = target / (duration / stepTime);
+        const interval = setInterval(() => {
+          current += stepAmount;
+          if (current >= target) {
+            el.textContent = target.toFixed(target % 1 ? 2 : 0) + suffix;
+            clearInterval(interval);
+          } else {
+            el.textContent = (target % 1 ? current.toFixed(2) : Math.ceil(current)) + suffix;
+          }
+        }, stepTime);
+      });
+    }
+  });
+}, { threshold: 0.35 });
+statsObserver.observe(document.querySelector('.hero-stats'));
+
+// Copy to clipboard for contact
+const copyButtons = document.querySelectorAll('.copy-pill');
+const copyMsg = document.createElement('div');
+copyMsg.id = 'copyMsg';
+copyMsg.className = 'copy-msg';
+document.body.appendChild(copyMsg);
+function showCopyMessage(message) {
+  copyMsg.textContent = message;
+  copyMsg.classList.add('visible');
+  clearTimeout(copyMsg._timeout);
+  copyMsg._timeout = setTimeout(() => copyMsg.classList.remove('visible'), 2200);
+}
+copyButtons.forEach(button => {
+  const text = button.dataset.copy;
+  const copyAction = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      showCopyMessage(`Copied ${text}`);
+    }).catch(() => {
+      showCopyMessage('Unable to copy');
+    });
+  };
+  button.addEventListener('click', copyAction);
+  button.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      copyAction();
+    }
+  });
+});
 
 // Mobile menu
 function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
