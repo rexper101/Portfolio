@@ -859,6 +859,56 @@ document.querySelectorAll('a,button,.pill,.proj-card,.edu-card,.cert-card,.cl').
   }
 });
 
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up'); });
+}, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll('.rv,.rl,.rr').forEach(el => obs.observe(el));
+
+// Smooth anchor scrolling with custom easing
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function smoothScrollTo(targetY, duration = 900) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeInOutCubic(progress);
+    window.scrollTo(0, startY + distance * eased);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href');
+    if (!id || id === '#') return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    const navHeight = document.querySelector('.nav-inner')?.offsetHeight || 60;
+    const targetY = target.getBoundingClientRect().top + window.scrollY - (navHeight + 10);
+    if (reduceMotion) {
+      window.scrollTo(0, targetY);
+    } else {
+      smoothScrollTo(targetY, 920);
+    }
+  });
+});
+
+// Active nav
+const secs = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let active = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) active = s.id; });
+  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
+}, { passive: true });
+
 // Typewriter-style role rotation
 const roleEl = document.querySelector('.dynamic-role');
 const roles = ['Junior Software Developer', 'Full Stack Builder', 'Problem Solver', 'Code Craftsman'];
