@@ -183,8 +183,6 @@ body.theme-glassmorphism{
   --shadow-neon:0 2px 8px rgba(167,243,208,0.12);
 }
 
-@media(max-width:820px){#scrollToTop{bottom:18px;right:18px;width:40px;height:40px}}
-
 /* REDUCED ANIMATIONS */
 body.anim-reduced{
   --animation-duration:0s;
@@ -425,20 +423,19 @@ section{scroll-margin-top:80px}
 }
 
 /* SCROLL TO TOP BUTTON */
-#scrollToTop{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,rgba(99,255,190,0.15),rgba(99,255,190,0.08));border:1.5px solid rgba(99,255,190,0.4);color:var(--neon);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:90;transition:.3s cubic-bezier(.22,1,.36,1);font-size:20px;backdrop-filter:blur(10px);box-shadow:0 12px 40px rgba(99,255,190,0.2),inset 0 1px 0 rgba(255,255,255,0.1);font-weight:700}
-#scrollToTop:hover{background:linear-gradient(135deg,rgba(99,255,190,0.25),rgba(99,255,190,0.15));transform:translateY(-6px);box-shadow:0 18px 50px rgba(99,255,190,0.3),inset 0 1px 0 rgba(255,255,255,0.15)}
+#scrollToTop{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--neon);border:none;color:#ffffff;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:90;transition:.2s;font-size:18px;backdrop-filter:none;box-shadow:0 4px 12px rgba(37,99,235,0.2);font-weight:700}
+#scrollToTop:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(37,99,235,0.3)}
 #scrollToTop.show{display:flex}
-@media(max-width:820px){#scrollToTop{bottom:18px;right:18px;width:40px;height:40px}}
 
 /* SOCIAL LINKS */
 .social-links{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px}
-.social-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1.5px solid rgba(99,255,190,0.25);color:var(--text2);text-decoration:none;transition:.3s;background:linear-gradient(135deg,rgba(99,255,190,0.08),rgba(99,255,190,0.04));font-weight:700;font-size:13px}
-.social-link:hover{color:var(--neon);border-color:rgba(99,255,190,0.5);background:linear-gradient(135deg,rgba(99,255,190,0.15),rgba(99,255,190,0.08));transform:translateY(-3px);box-shadow:0 8px 24px rgba(99,255,190,0.2)}
+.social-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;border:1px solid var(--border);color:var(--text2);text-decoration:none;transition:.2s;background:transparent;font-weight:600;font-size:13px}
+.social-link:hover{color:var(--neon);border-color:var(--neon);background:var(--glass);transform:translateY(-2px);box-shadow:0 2px 8px rgba(37,99,235,0.1)}
 
 /* FOOTER */
-footer{position:relative;z-index:1;border-top:1.5px solid rgba(99,255,190,0.1);padding:32px 2.5rem;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(8,11,18,0.92),rgba(13,17,23,0.85));backdrop-filter:blur(12px)}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 2.5rem;display:flex;align-items:center;justify-content:space-between;background:var(--bg);backdrop-filter:none}
 .ft-l{font-family:var(--mono);font-size:12px;color:var(--text3);font-weight:500}
-.ft-l span{color:var(--neon);font-weight:700}
+.ft-l span{color:var(--neon);font-weight:600}
 .ft-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--text3);font-weight:500}
 .ft-r .social-links{margin-left:auto}
 .ftr-dot{width:6px;height:6px;border-radius:50%;background:var(--neon);animation:blink .9s step-end infinite}
@@ -507,8 +504,6 @@ footer{position:relative;z-index:1;border-top:1.5px solid rgba(99,255,190,0.1);p
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   footer{flex-direction:column;gap:8px;text-align:center}
-  body{cursor:auto}
-  #cursor,#cursor-ring{display:none}
 }
 @media(max-width:480px){
   .hero-stats{gap:18px}
@@ -518,11 +513,6 @@ footer{position:relative;z-index:1;border-top:1.5px solid rgba(99,255,190,0.1);p
   .proj-grid{grid-template-columns:1fr}
   .proj-body{padding:18px 16px 0}
   .proj-foot{padding:12px 16px}
-}
-
-@media(hover:none),(pointer:coarse){
-  body{cursor:auto}
-  #cursor,#cursor-ring{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){
