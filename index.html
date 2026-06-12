@@ -468,9 +468,18 @@ footer{position:relative;z-index:1;border-top:1.5px solid rgba(99,255,190,0.1);p
 .rr.up{opacity:1;transform:translateX(0)}
 .rv.up,.rl.up,.rr.up{filter:blur(0)}
 
-/* Will-change for performance */
+/* FALLING EFFECT */
+.falling{opacity:0;transform:translateY(-60px);filter:blur(8px);animation:falling 1.2s cubic-bezier(.34,.67,.67,1) forwards}
+@keyframes falling{
+  0%{opacity:0;transform:translateY(-80px) rotateX(15deg);filter:blur(8px)}
+  50%{opacity:0.8;transform:translateY(-20px) rotateX(5deg);filter:blur(4px)}
+  100%{opacity:1;transform:translateY(0) rotateX(0deg);filter:blur(0)}
+}
+
+// Will-change for performance
 .rv,.rl,.rr{will-change:opacity,transform,filter}
 .pill:hover,.proj-card:hover,.pc:hover,.edu-card:hover,.cert-card:hover,.cl:hover{will-change:transform}
+.falling{will-change:transform,opacity,filter}
 
 /* SETTINGS MODAL */
 .settings-modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s ease}
@@ -1044,9 +1053,16 @@ document.querySelectorAll('a,button,.pill,.proj-card,.edu-card,.cert-card,.cl').
   }
 });
 
-// Reveal on scroll
+// Reveal on scroll with falling effect
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up'); });
+  entries.forEach((e, i) => { 
+    if(e.isIntersecting) {
+      setTimeout(() => {
+        e.target.classList.add('falling');
+        setTimeout(() => e.target.classList.add('up'), 50);
+      }, i * 80);
+    }
+  });
 }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
 document.querySelectorAll('.rv,.rl,.rr').forEach(el => obs.observe(el));
 
