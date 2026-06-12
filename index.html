@@ -78,6 +78,111 @@ body.theme-pastel{
   --shadow-neon:0 12px 34px rgba(255,100,150,0.12);
 }
 
+/* DARK MODERN THEME */
+body.theme-dark-modern{
+  --bg:#0f1419;
+  --bg2:#1a1f2e;
+  --bg3:#242c3d;
+  --glass:rgba(255,255,255,0.05);
+  --glass2:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.1);
+  --border2:rgba(120,119,198,0.3);
+  --neon:#7877c6;
+  --neon2:#6366f1;
+  --neon3:#ec4899;
+  --amber:#f59e0b;
+  --text:#e5e7eb;
+  --text2:#9ca3af;
+  --text3:#6b7280;
+  --white:#f3f4f6;
+  --shadow-lg:0 20px 50px rgba(0,0,0,0.5);
+  --shadow-neon:0 12px 34px rgba(120,119,198,0.15);
+}
+
+/* VIBRANT THEME */
+body.theme-vibrant{
+  --bg:#0a0e27;
+  --bg2:#111d3d;
+  --bg3:#1a2555;
+  --glass:rgba(255,0,128,0.04);
+  --glass2:rgba(255,0,128,0.07);
+  --border:rgba(255,0,128,0.15);
+  --border2:rgba(0,255,200,0.35);
+  --neon:#00ffc8;
+  --neon2:#ff006e;
+  --neon3:#ffbe0b;
+  --amber:#ff4757;
+  --text:#e0f7ff;
+  --text2:#88d0ff;
+  --text3:#4a7c99;
+  --white:#00fff0;
+  --shadow-lg:0 20px 50px rgba(0,255,200,0.2);
+  --shadow-neon:0 12px 34px rgba(0,255,200,0.25);
+}
+
+/* CORPORATE THEME */
+body.theme-corporate{
+  --bg:#1e1e2e;
+  --bg2:#2a2a3e;
+  --bg3:#353550;
+  --glass:rgba(100,116,139,0.04);
+  --glass2:rgba(100,116,139,0.08);
+  --border:rgba(100,116,139,0.2);
+  --border2:rgba(59,130,246,0.25);
+  --neon:#3b82f6;
+  --neon2:#1e40af;
+  --neon3:#0f766e;
+  --amber:#d97706;
+  --text:#e2e8f0;
+  --text2:#cbd5e1;
+  --text3:#94a3b8;
+  --white:#f1f5f9;
+  --shadow-lg:0 20px 50px rgba(30,64,175,0.15);
+  --shadow-neon:0 12px 34px rgba(59,130,246,0.15);
+}
+
+/* RETRO THEME */
+body.theme-retro{
+  --bg:#2d1b3d;
+  --bg2:#3d2451;
+  --bg3:#4d3461;
+  --glass:rgba(255,179,71,0.05);
+  --glass2:rgba(255,179,71,0.09);
+  --border:rgba(255,179,71,0.2);
+  --border2:rgba(255,100,80,0.3);
+  --neon:#ffb347;
+  --neon2:#ff6450;
+  --neon3:#ff00ff;
+  --amber:#ffd700;
+  --text:#ffd9b3;
+  --text2:#ffb366;
+  --text3:#cc8844;
+  --white:#ffe6cc;
+  --shadow-lg:0 20px 50px rgba(255,100,80,0.25);
+  --shadow-neon:0 12px 34px rgba(255,179,71,0.2);
+}
+
+/* GLASSMORPHISM THEME */
+body.theme-glassmorphism{
+  --bg:#0f1419;
+  --bg2:#1a202c;
+  --bg3:#2d3748;
+  --glass:rgba(255,255,255,0.15);
+  --glass2:rgba(255,255,255,0.1);
+  --border:rgba(255,255,255,0.2);
+  --border2:rgba(167,243,208,0.4);
+  --neon:#a3f4d0;
+  --neon2:#7dd3fc;
+  --neon3:#f472b6;
+  --amber:#fbbf24;
+  --text:#f0fdfa;
+  --text2:#c3fae8;
+  --text3:#86efac;
+  --white:#ecfdf5;
+  --shadow-lg:0 20px 60px rgba(167,243,208,0.3);
+  --shadow-neon:0 12px 40px rgba(167,243,208,0.25);
+}
+
 /* REDUCED ANIMATIONS */
 body.anim-reduced{
   --animation-duration:0s;
@@ -470,15 +575,35 @@ footer{position:relative;z-index:1;border-top:1.5px solid rgba(99,255,190,0.1);p
       <div class="sp-options">
         <div class="sp-option active" data-theme="cyberpunk" onclick="setTheme('cyberpunk', this)">
           <div class="sp-radio"></div>
-          <span>Cyberpunk (neon)</span>
+          <span>Cyberpunk 🌀</span>
         </div>
         <div class="sp-option" data-theme="minimal" onclick="setTheme('minimal', this)">
           <div class="sp-radio"></div>
-          <span>Minimal (clean)</span>
+          <span>Minimal ⚪</span>
         </div>
         <div class="sp-option" data-theme="pastel" onclick="setTheme('pastel', this)">
           <div class="sp-radio"></div>
-          <span>Pastel (warm)</span>
+          <span>Pastel 🎨</span>
+        </div>
+        <div class="sp-option" data-theme="dark-modern" onclick="setTheme('dark-modern', this)">
+          <div class="sp-radio"></div>
+          <span>Dark Modern 🌙</span>
+        </div>
+        <div class="sp-option" data-theme="vibrant" onclick="setTheme('vibrant', this)">
+          <div class="sp-radio"></div>
+          <span>Vibrant ⚡</span>
+        </div>
+        <div class="sp-option" data-theme="corporate" onclick="setTheme('corporate', this)">
+          <div class="sp-radio"></div>
+          <span>Corporate 💼</span>
+        </div>
+        <div class="sp-option" data-theme="retro" onclick="setTheme('retro', this)">
+          <div class="sp-radio"></div>
+          <span>Retro 📼</span>
+        </div>
+        <div class="sp-option" data-theme="glassmorphism" onclick="setTheme('glassmorphism', this)">
+          <div class="sp-radio"></div>
+          <span>Glassmorphism ❄</span>
         </div>
       </div>
     </div>
@@ -1060,6 +1185,10 @@ function initSettings(){
   const saved = JSON.parse(localStorage.getItem('portfolioSettings')) || { theme: 'cyberpunk', layout: 'expanded', anim: 'full' };
   applySettings(saved);
   updateSettingsUI(saved);
+  // Set default theme if not set
+  if (!localStorage.getItem('portfolioSettings')) {
+    localStorage.setItem('portfolioSettings', JSON.stringify(saved));
+  }
 }
 
 function applySettings(settings){
