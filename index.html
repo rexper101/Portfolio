@@ -1113,38 +1113,6 @@ document.getElementById('settingsModal').addEventListener('click', function(e){
   if(e.target.id==='settingsModal') closeSettings();
 });
 
-// Initialize on load
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',initSettings);
-}else{
-  initSettings();
-}
-
-// SCROLL TO TOP BUTTON
-const scrollToTopBtn = document.getElementById('scrollToTop');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollToTopBtn.classList.add('show');
-  } else {
-    scrollToTopBtn.classList.remove('show');
-  }
-}, { passive: true });
-
-function scrollToTop() {
-  if (reduceMotion) {
-    window.scrollTo(0, 0);
-  } else {
-    smoothScrollTo(0, 600);
-  }
-}
-
-scrollToTopBtn.addEventListener('click', scrollToTop);
-scrollToTopBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    scrollToTop();
-  }
-});
 </script>
 </body>
 </html>
