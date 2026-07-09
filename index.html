@@ -1138,6 +1138,13 @@ function scrollToTop() {
   }
 }
 
+scrollToTopBtn.addEventListener('click', scrollToTop);
+scrollToTopBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    scrollToTop();
+  }
+});
 </script>
 </body>
 </html>
