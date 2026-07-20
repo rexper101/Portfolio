@@ -144,85 +144,108 @@ body::after{
   position:fixed;
   top:50%;
   left:50%;
-  width:800px;
-  height:800px;
-  margin-left:-400px;
-  margin-top:-400px;
+  width:1000px;
+  height:1000px;
+  margin-left:-500px;
+  margin-top:-500px;
   z-index:-1;
   pointer-events:none;
 }
 
-/* SUN */
+/* SUN - GLOWING CORE */
 .sun{
   position:absolute;
   top:50%;
   left:50%;
-  width:60px;
-  height:60px;
-  margin-left:-30px;
-  margin-top:-30px;
-  background:radial-gradient(circle at 30% 30%, #ffff00, #ff8800, #ff0000);
+  width:80px;
+  height:80px;
+  margin-left:-40px;
+  margin-top:-40px;
+  background:radial-gradient(circle at 35% 35%, #ffff00, #ffcc00, #ff8800, #ff4400, #dd0000);
   border-radius:50%;
-  box-shadow:0 0 40px #ffff00,0 0 60px rgba(255,200,0,0.8),0 0 80px rgba(255,150,0,0.5),inset -10px -10px 20px rgba(0,0,0,0.3);
+  box-shadow:0 0 50px #ffff00,0 0 80px rgba(255,200,0,0.9),0 0 120px rgba(255,150,0,0.6),0 0 160px rgba(255,0,0,0.3),inset -15px -15px 30px rgba(0,0,0,0.4);
+  animation:pulse-sun 4s ease-in-out infinite;
 }
 
-/* ORBITAL PATHS */
+@keyframes pulse-sun{
+  0%,100%{box-shadow:0 0 50px #ffff00,0 0 80px rgba(255,200,0,0.9),0 0 120px rgba(255,150,0,0.6),0 0 160px rgba(255,0,0,0.3)}
+  50%{box-shadow:0 0 60px #ffff00,0 0 100px rgba(255,200,0,1),0 0 140px rgba(255,150,0,0.7),0 0 180px rgba(255,0,0,0.4)}
+}
+
+/* ORBITAL PATHS - VISIBLE RINGS */
 .orbit{
   position:absolute;
   top:50%;
   left:50%;
-  border:1px solid rgba(0,255,136,0.08);
+  border:1px solid rgba(0,255,136,0.12);
   border-radius:50%;
   animation-timing-function:linear;
   animation-iteration-count:infinite;
+  box-shadow:inset 0 0 20px rgba(0,255,136,0.04);
 }
 
 .orbit-mercury{
-  width:120px;
-  height:120px;
-  margin-left:-60px;
-  margin-top:-60px;
-  animation:rotate-mercury 12s linear infinite;
+  width:140px;
+  height:140px;
+  margin-left:-70px;
+  margin-top:-70px;
+  animation:rotate-mercury 10s linear infinite;
 }
 
 .orbit-venus{
-  width:180px;
-  height:180px;
-  margin-left:-90px;
-  margin-top:-90px;
-  animation:rotate-venus 18s linear infinite;
+  width:200px;
+  height:200px;
+  margin-left:-100px;
+  margin-top:-100px;
+  animation:rotate-venus 15s linear infinite;
 }
 
 .orbit-earth{
-  width:260px;
-  height:260px;
-  margin-left:-130px;
-  margin-top:-130px;
-  animation:rotate-earth 24s linear infinite;
+  width:280px;
+  height:280px;
+  margin-left:-140px;
+  margin-top:-140px;
+  animation:rotate-earth 20s linear infinite;
 }
 
 .orbit-mars{
-  width:340px;
-  height:340px;
-  margin-left:-170px;
-  margin-top:-170px;
-  animation:rotate-mars 30s linear infinite;
+  width:360px;
+  height:360px;
+  margin-left:-180px;
+  margin-top:-180px;
+  animation:rotate-mars 25s linear infinite;
 }
 
 .orbit-jupiter{
-  width:440px;
-  height:440px;
-  margin-left:-220px;
-  margin-top:-220px;
-  animation:rotate-jupiter 40s linear infinite;
+  width:480px;
+  height:480px;
+  margin-left:-240px;
+  margin-top:-240px;
+  animation:rotate-jupiter 35s linear infinite;
 }
 
 .orbit-saturn{
-  width:540px;
-  height:540px;
-  margin-left:-270px;
-  margin-top:-270px;
-  animation:rotate-saturn 50s linear infinite;
+  width:600px;
+  height:600px;
+  margin-left:-300px;
+  margin-top:-300px;
+  animation:rotate-saturn 45s linear infinite;
+}
+
+.orbit-uranus{
+  width:700px;
+  height:700px;
+  margin-left:-350px;
+  margin-top:-350px;
+  animation:rotate-uranus 55s linear infinite;
+}
+
+.orbit-neptune{
+  width:800px;
+  height:800px;
+  margin-left:-400px;
+  margin-top:-400px;
+  animation:rotate-neptune 65s linear infinite;
 }
 
 /* PLANETS */
@@ -238,10 +261,10 @@ body::after{
   background:#8c7853;
   color:#8c7853;
   top:50%;
-  left:calc(50% + 60px);
+  left:calc(50% + 70px);
   margin-left:-4px;
   margin-top:-4px;
-  box-shadow:0 0 8px rgba(140,120,83,0.6);
+  box-shadow:0 0 8px rgba(140,120,83,0.7);
 }
 
 .planet-venus{
@@ -250,22 +273,34 @@ body::after{
   background:#ffc649;
   color:#ffc649;
   top:50%;
-  left:calc(50% + 90px);
+  left:calc(50% + 100px);
   margin-left:-7px;
   margin-top:-7px;
-  box-shadow:0 0 10px rgba(255,198,73,0.6);
+  box-shadow:0 0 10px rgba(255,198,73,0.7);
 }
 
 .planet-earth{
   width:15px;
   height:15px;
-  background:#4a90e2;
+  background:linear-gradient(135deg, #4a90e2, #3498db);
   color:#4a90e2;
   top:50%;
-  left:calc(50% + 130px);
+  left:calc(50% + 140px);
   margin-left:-7.5px;
   margin-top:-7.5px;
-  box-shadow:0 0 12px rgba(74,144,226,0.7);
+  box-shadow:0 0 12px rgba(74,144,226,0.8);
+}
+
+.planet-earth::after{
+  content:'';
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:#fff;
+  border-radius:50%;
+  top:2px;
+  left:6px;
+  box-shadow:0 0 4px rgba(255,255,255,0.6);
 }
 
 .planet-mars{
@@ -274,45 +309,80 @@ body::after{
   background:#e27b58;
   color:#e27b58;
   top:50%;
-  left:calc(50% + 170px);
+  left:calc(50% + 180px);
   margin-left:-6px;
   margin-top:-6px;
-  box-shadow:0 0 10px rgba(226,123,88,0.6);
+  box-shadow:0 0 10px rgba(226,123,88,0.7);
 }
 
 .planet-jupiter{
-  width:25px;
-  height:25px;
-  background:radial-gradient(ellipse at 30% 40%, #d4a574, #a67c52);
+  width:32px;
+  height:32px;
+  background:radial-gradient(ellipse at 30% 35%, #d4a574, #b8963f);
   color:#c9935f;
   top:50%;
-  left:calc(50% + 220px);
-  margin-left:-12.5px;
-  margin-top:-12.5px;
-  box-shadow:0 0 15px rgba(201,147,95,0.7),inset -2px -2px 8px rgba(0,0,0,0.3);
+  left:calc(50% + 240px);
+  margin-left:-16px;
+  margin-top:-16px;
+  box-shadow:0 0 18px rgba(201,147,95,0.8),inset -3px -3px 10px rgba(0,0,0,0.4);
+  position:relative;
+}
+
+.planet-jupiter::before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,transparent,rgba(139,90,43,0.6),transparent);
+  top:40%;
+  left:0;
 }
 
 .planet-saturn{
-  width:20px;
-  height:20px;
+  width:26px;
+  height:26px;
   background:#fad5a5;
   color:#fad5a5;
   top:50%;
-  left:calc(50% + 270px);
-  margin-left:-10px;
-  margin-top:-10px;
-  box-shadow:0 0 14px rgba(250,213,165,0.6);
+  left:calc(50% + 300px);
+  margin-left:-13px;
+  margin-top:-13px;
+  box-shadow:0 0 16px rgba(250,213,165,0.8);
   position:relative;
 }
 
 .planet-saturn::after{
   content:'';
   position:absolute;
-  inset:-8px;
-  border:2px solid rgba(250,213,165,0.5);
+  inset:-10px;
+  border:2px solid rgba(250,213,165,0.6);
   border-radius:50%;
-  box-shadow:inset 0 0 8px rgba(0,0,0,0.2);
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.3);
   animation:rotate-saturn-ring 4s linear infinite;
+}
+
+.planet-uranus{
+  width:18px;
+  height:18px;
+  background:radial-gradient(circle at 30% 30%, #4fd0e7, #2ba3ba);
+  color:#4fd0e7;
+  top:50%;
+  left:calc(50% + 350px);
+  margin-left:-9px;
+  margin-top:-9px;
+  box-shadow:0 0 12px rgba(79,208,231,0.7);
+}
+
+.planet-neptune{
+  width:17px;
+  height:17px;
+  background:radial-gradient(circle at 35% 35%, #4166f5, #1e3a8a);
+  color:#4166f5;
+  top:50%;
+  left:calc(50% + 400px);
+  margin-left:-8.5px;
+  margin-top:-8.5px;
+  box-shadow:0 0 12px rgba(65,102,245,0.7);
 }
 
 /* ORBITAL ANIMATIONS */
@@ -322,6 +392,8 @@ body::after{
 @keyframes rotate-mars{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
 @keyframes rotate-jupiter{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
 @keyframes rotate-saturn{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+@keyframes rotate-uranus{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+@keyframes rotate-neptune{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
 @keyframes rotate-saturn-ring{from{transform:rotateX(75deg) rotateZ(0deg)} to{transform:rotateX(75deg) rotateZ(360deg)}}
 
 /* TWINKLING STARS ANIMATION */
@@ -709,6 +781,16 @@ footer{position:relative;z-index:1;border-top:2px solid rgba(0,255,136,0.1);padd
   <!-- SATURN ORBIT -->
   <div class="orbit orbit-saturn">
     <div class="planet planet-saturn"></div>
+  </div>
+  
+  <!-- URANUS ORBIT -->
+  <div class="orbit orbit-uranus">
+    <div class="planet planet-uranus"></div>
+  </div>
+  
+  <!-- NEPTUNE ORBIT -->
+  <div class="orbit orbit-neptune">
+    <div class="planet planet-neptune"></div>
   </div>
 </div>
 
