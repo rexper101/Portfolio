@@ -1329,18 +1329,6 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
 }, { passive: true });
 
-// Typewriter-style role rotation
-const roleEl = document.querySelector('.dynamic-role');
-const roles = ['AI & ML Engineer', 'Machine Learning Researcher', 'Data Scientist', 'Deep Learning Specialist'];
-let roleIndex = 0;
-setInterval(() => {
-  roleEl.classList.add('fade');
-  setTimeout(() => {
-    roleIndex = (roleIndex + 1) % roles.length;
-    roleEl.textContent = roles[roleIndex];
-    roleEl.classList.remove('fade');
-  }, 360);
-}, 3600);
 
 // SETTINGS MANAGEMENT
 function initSettings(){
