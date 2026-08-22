@@ -1342,35 +1342,6 @@ setInterval(() => {
   }, 360);
 }, 3600);
 
-// Animated hero stats
-const statEls = document.querySelectorAll('.stat-val');
-let statsAnimated = false;
-const statsObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !statsAnimated) {
-      statsAnimated = true;
-      statEls.forEach(el => {
-        const target = parseFloat(el.dataset.target) || 0;
-        const suffix = el.dataset.suffix || '';
-        const duration = 1200;
-        const stepTime = 20;
-        let current = 0;
-        const stepAmount = target / (duration / stepTime);
-        const interval = setInterval(() => {
-          current += stepAmount;
-          if (current >= target) {
-            el.textContent = target.toFixed(target % 1 ? 2 : 0) + suffix;
-            clearInterval(interval);
-          } else {
-            el.textContent = (target % 1 ? current.toFixed(2) : Math.ceil(current)) + suffix;
-          }
-        }, stepTime);
-      });
-    }
-  });
-}, { threshold: 0.35 });
-statsObserver.observe(document.querySelector('.hero-stats'));
-
 // SETTINGS MANAGEMENT
 function initSettings(){
   const saved = JSON.parse(localStorage.getItem('portfolioSettings')) || { theme: 'cyberpunk', layout: 'expanded', anim: 'full' };
