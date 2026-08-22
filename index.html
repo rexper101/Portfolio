@@ -1320,14 +1320,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// Active nav
-const secs = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
-window.addEventListener('scroll', () => {
-  let active = '';
-  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) active = s.id; });
-  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
-}, { passive: true });
 
 
 // SETTINGS MANAGEMENT
