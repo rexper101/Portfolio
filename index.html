@@ -1371,36 +1371,6 @@ const statsObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.35 });
 statsObserver.observe(document.querySelector('.hero-stats'));
 
-// Copy to clipboard for contact
-const copyButtons = document.querySelectorAll('.copy-pill');
-const copyMsg = document.createElement('div');
-copyMsg.id = 'copyMsg';
-copyMsg.className = 'copy-msg';
-document.body.appendChild(copyMsg);
-function showCopyMessage(message) {
-  copyMsg.textContent = message;
-  copyMsg.classList.add('visible');
-  clearTimeout(copyMsg._timeout);
-  copyMsg._timeout = setTimeout(() => copyMsg.classList.remove('visible'), 2200);
-}
-copyButtons.forEach(button => {
-  const text = button.dataset.copy;
-  const copyAction = () => {
-    navigator.clipboard.writeText(text).then(() => {
-      showCopyMessage(`Copied ${text}`);
-    }).catch(() => {
-      showCopyMessage('Unable to copy');
-    });
-  };
-  button.addEventListener('click', copyAction);
-  button.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      copyAction();
-    }
-  });
-});
-
 // SETTINGS MANAGEMENT
 function initSettings(){
   const saved = JSON.parse(localStorage.getItem('portfolioSettings')) || { theme: 'cyberpunk', layout: 'expanded', anim: 'full' };
