@@ -720,6 +720,20 @@ document.querySelectorAll('a,button,.pill,.pcard,.ec,.ccard,.cl').forEach(el => 
   el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(99,255,190,.35)'; });
 });
 
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv,.rl,.rr').forEach(el => obs.observe(el));
+
+// Active nav
+const secs = document.querySelectorAll('section');
+const nls  = document.querySelectorAll('.nl');
+window.addEventListener('scroll', () => {
+  let active = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) active = s.id; });
+  nls.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+active));
+}, { passive: true });
 
 // Mobile menu
 function toggleMob(){ document.getElementById('mob').classList.toggle('open'); }
