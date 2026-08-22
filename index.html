@@ -1401,20 +1401,6 @@ copyButtons.forEach(button => {
   });
 });
 
-// Mobile menu
-function toggleMenu(){ 
-  const menu = document.getElementById('mobMenu');
-  const ham = document.getElementById('ham');
-  menu.classList.toggle('open');
-  ham.classList.toggle('open');
-}
-function closeMob(){ 
-  const menu = document.getElementById('mobMenu');
-  const ham = document.getElementById('ham');
-  menu.classList.remove('open');
-  ham.classList.remove('open');
-}
-
 // SETTINGS MANAGEMENT
 function initSettings(){
   const saved = JSON.parse(localStorage.getItem('portfolioSettings')) || { theme: 'cyberpunk', layout: 'expanded', anim: 'full' };
