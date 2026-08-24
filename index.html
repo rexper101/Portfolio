@@ -670,15 +670,6 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.rv,.rl,.rr').forEach(el => obs.observe(el));
 
-// ACTIVE NAV
-const secs = document.querySelectorAll('section');
-const nls  = document.querySelectorAll('.nl');
-window.addEventListener('scroll', () => {
-  let a = '';
-  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) a = s.id; });
-  nls.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+a));
-}, { passive: true });
-
 // MOBILE MENU
 function toggleMob(){ document.getElementById('mob').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mob').classList.remove('open'); }
