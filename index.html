@@ -708,6 +708,23 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:22
 </footer>
 
 <script>
+// Custom cursor
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px';
+  setTimeout(() => { ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px'; }, 75);
+});
+document.querySelectorAll('a,button,.pill,.pcard,.ec,.ccard,.cl').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.7)'; ring.style.borderColor='rgba(99,255,190,.7)'; });
+  el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(99,255,190,.35)'; });
+});
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv,.rl,.rr').forEach(el => obs.observe(el));
 
 // Active nav
 const secs = document.querySelectorAll('section');
