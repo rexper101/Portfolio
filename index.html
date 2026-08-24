@@ -652,17 +652,6 @@ footer{border-top:1px solid rgba(0,0,0,.08);padding:24px 3rem;display:flex;align
 </footer>
 
 <script>
-// CURSOR
-const dot = document.getElementById('dot');
-const ring = document.getElementById('ring');
-document.addEventListener('mousemove', e => {
-  dot.style.left = e.clientX+'px'; dot.style.top = e.clientY+'px';
-  setTimeout(() => { ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px'; }, 80);
-});
-document.querySelectorAll('a,button,.prow,.edu-row,.citem,.skill-item').forEach(el => {
-  el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.5)'; ring.style.borderColor='rgba(0,0,0,0.4)'; dot.style.background='#0a0a0a'; });
-  el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(0,0,0,1)'; });
-});
 
 // MOBILE MENU
 function toggleMob(){ document.getElementById('mob').classList.toggle('open'); }
