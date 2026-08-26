@@ -585,15 +585,6 @@ document.querySelectorAll('.wave svg').forEach((svg,i)=>{
   svg.innerHTML = bars;
 });
 
-// active tab on scroll
-const secs = document.querySelectorAll('section');
-const tabs = document.querySelectorAll('.tab');
-window.addEventListener('scroll',()=>{
-  let active='';
-  secs.forEach(s=>{ if(window.scrollY >= s.offsetTop - 120) active = s.id; });
-  tabs.forEach(t=>t.classList.toggle('active', t.getAttribute('href') === '#'+active));
-},{passive:true});
-
 function toggleMob(){ document.getElementById('mob').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mob').classList.remove('open'); }
 </script>
