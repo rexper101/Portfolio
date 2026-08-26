@@ -585,12 +585,6 @@ document.querySelectorAll('.wave svg').forEach((svg,i)=>{
   svg.innerHTML = bars;
 });
 
-// scroll reveal
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('up'); });
-},{threshold:.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-
 // active tab on scroll
 const secs = document.querySelectorAll('section');
 const tabs = document.querySelectorAll('.tab');
