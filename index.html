@@ -416,6 +416,48 @@ footer b{color:var(--ink)}
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" id="wv3"></svg></div>
 
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow rv"><span class="tag">03</span>Ledger</div>
+    <h2 class="htitle rv" style="transition-delay:.05s">Tools on hand</h2>
+    <p class="sub rv" style="transition-delay:.1s">What I reach for, sorted by what it's for rather than how impressive it sounds.</p>
+
+    <div class="skill-g rv" style="transition-delay:.15s">
+      <div class="skill-col">
+        <div class="skill-cat">Languages &amp; data</div>
+        <div class="skill-item"><span class="mk">▣</span>Python</div>
+        <div class="skill-item"><span class="mk">▣</span>Java (basic)</div>
+        <div class="skill-item"><span class="mk">▣</span>SQL / MySQL</div>
+        <div class="skill-item"><span class="mk">▣</span>NumPy / Pandas</div>
+        <div class="skill-item"><span class="mk">▣</span>Matplotlib</div>
+        <div class="skill-item"><span class="mk">▣</span>REST APIs</div>
+      </div>
+      <div class="skill-col">
+        <div class="skill-cat">ML / AI frameworks</div>
+        <div class="skill-item"><span class="mk">▣</span>PyTorch</div>
+        <div class="skill-item"><span class="mk">▣</span>Scikit-learn</div>
+        <div class="skill-item"><span class="mk">▣</span>Ollama (local LLMs)</div>
+        <div class="skill-item"><span class="mk">▣</span>Whisper (speech-to-text)</div>
+        <div class="skill-item"><span class="mk">▣</span>Piper (text-to-speech)</div>
+        <div class="skill-item"><span class="mk">▣</span>OpenAI API</div>
+      </div>
+      <div class="skill-col">
+        <div class="skill-cat">Applied AI</div>
+        <div class="skill-item"><span class="mk">▣</span>NLP / spaCy</div>
+        <div class="skill-item"><span class="mk">▣</span>Computer vision</div>
+        <div class="skill-item"><span class="mk">▣</span>Deep learning</div>
+        <div class="skill-item"><span class="mk">▣</span>Generative AI</div>
+        <div class="skill-item"><span class="mk">▣</span>Prompt engineering</div>
+      </div>
+      <div class="skill-col">
+        <div class="skill-cat">Deployment &amp; cloud</div>
+        <div class="skill-item"><span class="mk">▣</span>Azure AI</div>
+        <div class="skill-item"><span class="mk">▣</span>Oracle Cloud (OCI)</div>
+        <div class="skill-item"><span class="mk">▣</span>Streamlit</div>
+        <div class="skill-item"><span class="mk">▣</span>Git / GitHub</div>
+      </div>
+    </div>
 
     <div class="cert-area">
       <div class="ledger-lbl rv">Certifications &amp; achievements</div>
@@ -528,6 +570,35 @@ footer b{color:var(--ink)}
 </footer>
 
 <script>
+// generate waveform bars for each divider (signature motif)
+document.querySelectorAll('.wave svg').forEach((svg,i)=>{
+  let bars='';
+  let n=90;
+  let rnd = i*13.37+1;
+  for(let x=0;x<n;x++){
+    rnd = (rnd*9301+49297)%233280;
+    const h = 3 + (rnd/233280)*16;
+    const px = (x/n)*1200 + 4;
+    const y1 = 11-h/2, y2 = 11+h/2;
+    bars += `<line x1="${px}" y1="${y1}" x2="${px}" y2="${y2}" stroke="#AE4430" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>`;
+  }
+  svg.innerHTML = bars;
+});
+
+// scroll reveal
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('up'); });
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// active tab on scroll
+const secs = document.querySelectorAll('section');
+const tabs = document.querySelectorAll('.tab');
+window.addEventListener('scroll',()=>{
+  let active='';
+  secs.forEach(s=>{ if(window.scrollY >= s.offsetTop - 120) active = s.id; });
+  tabs.forEach(t=>t.classList.toggle('active', t.getAttribute('href') === '#'+active));
+},{passive:true});
 
 function toggleMob(){ document.getElementById('mob').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mob').classList.remove('open'); }
