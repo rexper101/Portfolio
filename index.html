@@ -570,20 +570,6 @@ footer b{color:var(--ink)}
 </footer>
 
 <script>
-// generate waveform bars for each divider (signature motif)
-document.querySelectorAll('.wave svg').forEach((svg,i)=>{
-  let bars='';
-  let n=90;
-  let rnd = i*13.37+1;
-  for(let x=0;x<n;x++){
-    rnd = (rnd*9301+49297)%233280;
-    const h = 3 + (rnd/233280)*16;
-    const px = (x/n)*1200 + 4;
-    const y1 = 11-h/2, y2 = 11+h/2;
-    bars += `<line x1="${px}" y1="${y1}" x2="${px}" y2="${y2}" stroke="#AE4430" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>`;
-  }
-  svg.innerHTML = bars;
-});
 
 function toggleMob(){ document.getElementById('mob').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mob').classList.remove('open'); }
